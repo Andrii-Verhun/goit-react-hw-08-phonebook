@@ -7,10 +7,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  height: 100vh;
 }
 
 code {
@@ -23,5 +19,5 @@ p {
 }
 
 .active {
-  color: #e84a5f;
+  color: #e84a5f !important;
 }

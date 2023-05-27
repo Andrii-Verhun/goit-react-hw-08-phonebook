@@ -1,7 +1,11 @@
 .header {
+    margin: 0 auto;
+    width: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
-    border-bottom: 1px solid #266b88;
+    background: #cfe7ee;
+    border-radius: 20px;
+    padding: 5px 0;
 }

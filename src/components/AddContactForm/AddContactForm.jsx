@@ -1,13 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux';
 
+import { RotatingLines } from 'react-loader-spinner';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 import { selectContacts } from 'redux/contacts/selectors';
 import { addContact } from 'redux/contacts/operations';
+import { selectIsLoadingAdd } from 'redux/contacts/selectors';
 
 import css from './AddContactForm.module.css';
 
 export const AddContactForm = () => {
     const dispatch = useDispatch();
     const contacts = useSelector(selectContacts);
+    const isLoadingAdd = useSelector(selectIsLoadingAdd);
 
     const checkingForMatches = (value) => {
         return (
@@ -20,7 +25,7 @@ export const AddContactForm = () => {
         const { target: { name, number } } = evt;
 
         if (checkingForMatches(name.value)) {
-        alert(`${name.value} is already in contacts`);
+        Notify.warning(`${name.value} is already in contacts`)
         return
         };
 
@@ -28,6 +33,8 @@ export const AddContactForm = () => {
 
         name.value = '';
         number.value = '';
+
+        Notify.success('Contact added.');
     };
 
     return <form
@@ -54,6 +61,17 @@ export const AddContactForm = () => {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
         />
-        <button className={css.button} type='submit'>Add contact</button>
+        <button
+            className={css.button}
+            type='submit'>
+            Add contact
+            {<RotatingLines
+                strokeColor="white"
+                strokeWidth="5"
+                animationDuration="0.75"
+                width="20"
+                visible={isLoadingAdd}
+            />}
+        </button>
     </form>
 };

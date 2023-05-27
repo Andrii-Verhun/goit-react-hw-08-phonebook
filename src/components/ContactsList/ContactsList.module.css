@@ -1,5 +1,16 @@
 .wrapper {
-    width: 100vh;
+    width: 500px;
+    box-sizing: border-box;
+    background: #cfe7ee;
+    border-radius: 20px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.rotatingWrapper {
+    display: flex;
+    justify-content: center;
+    width: 500px;
     box-sizing: border-box;
     background: #cfe7ee;
     border-radius: 20px;

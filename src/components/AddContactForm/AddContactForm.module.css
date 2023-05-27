@@ -1,9 +1,10 @@
 .form {
-    width: 100vh;
+    width: 500px;
     box-sizing: border-box;
     background: #cfe7ee;
     border-radius: 20px;
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 .label {
@@ -44,6 +45,9 @@
     text-align: center;
     width: 100%;
     transition: all 300ms;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 .button:hover {

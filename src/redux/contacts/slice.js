@@ -4,7 +4,8 @@ import { fetchContacts, addContact, deleteContact } from "./operations";
 
 const contactsInitialState = {
     items: [],
-    isLoading: false,
+    isLoadingFetch: false,
+    isLoadingAdd: false,
     error: null
 };
 
@@ -13,41 +14,41 @@ const contactsSlice = createSlice({
     initialState: contactsInitialState,
     extraReducers: (builder) => {
         builder.addCase(fetchContacts.pending, (state) => {
-            state.isLoading = true;
+            state.isLoadingFetch = true;
         })
         .addCase(fetchContacts.fulfilled, (state, action) => {
-            state.isLoading = false;
+            state.isLoadingFetch = false;
             state.error = null;
             state.items = action.payload;
         })
         .addCase(fetchContacts.rejected, (state, action) => {
-            state.isLoading = false;
+            state.isLoadingFetch = false;
             state.error = action.payload;
         })
         .addCase(addContact.pending, (state) => {
-            state.isLoading = true;
+            state.isLoadingAdd = true;
         })
         .addCase(addContact.fulfilled, (state, action) => {
-            state.isLoading = false;
+            state.isLoadingAdd = false;
             state.error = null;
             state.items.push(action.payload);
         })
         .addCase(addContact.rejected, (state, action) => {
-            state.isLoading = false;
+            state.isLoadingAdd = false;
             state.error = action.payload;
         })
         .addCase(deleteContact.pending, (state) => {
-            state.isLoading = true;
+            state.isLoadingDel = true;
         })
         .addCase(deleteContact.fulfilled, (state, action) => {
-            state.isLoading = false;
+            state.isLoadingDel = false;
             state.error = null;
             const index = state.items.findIndex((el) => el.id === action.payload.id);
             console.log(index);
             state.items.splice(index, 1);
         })
         .addCase(deleteContact.rejected, (state, action) => {
-            state.isLoading = false;
+            state.isLoadingDel = false;
             state.error = action.payload;
         })
     }

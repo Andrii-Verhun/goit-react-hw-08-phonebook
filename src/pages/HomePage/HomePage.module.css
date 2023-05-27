@@ -1,0 +1,21 @@
+.homepage {
+    margin: 0 auto;
+    width: 460px;
+    background: #cfe7ee;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 500;
+    color: #354888;
+}
+
+.title {
+    text-align: center;
+    font-size: 25px;
+    font-weight: 500;
+    color: #354888;
+}

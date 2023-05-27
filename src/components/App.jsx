@@ -1,3 +1,9 @@
+import { useEffect } from 'react';
+
+import { useDispatch } from 'react-redux';
+
+import { refreshUser } from 'redux/auth/operations';
+
 import { Route, Routes } from 'react-router-dom';
 
 import { RestrictedRoute } from './RestrictedRoute';
@@ -9,6 +15,12 @@ import { Layout } from './Layout/Layout';
 import { HomePage } from 'pages/HomePage/HomePage';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path='/' element={<Layout />} >
