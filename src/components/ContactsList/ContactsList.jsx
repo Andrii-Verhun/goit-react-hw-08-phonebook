@@ -1,9 +1,9 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { fetchContacts } from 'redux/operations';
-import { getContacts } from 'redux/selectors';
-import { getFilterValue } from 'redux/selectors';
+import { fetchContacts } from 'redux/contacts/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { selectFilterValue } from 'redux/filter/selectors';
 
 import { Contact } from './Contact/Contact';
 
@@ -16,8 +16,8 @@ export const ContactsList = () => {
         dispatch(fetchContacts());
     }, [dispatch]);
 
-    const contacts = useSelector(getContacts);
-    const filter = useSelector(getFilterValue);
+    const contacts = useSelector(selectContacts);
+    const filter = useSelector(selectFilterValue);
 
     const filteredContacts = useMemo(() => {
     return contacts.filter((el) => (el.name.toLowerCase().includes(filter.toLowerCase())));
@@ -30,7 +30,7 @@ export const ContactsList = () => {
                     <Contact
                         key={el.id}
                         name={el.name}
-                        number={el.phone}
+                        number={el.number}
                         id={el.id}
                     />)
                 )}

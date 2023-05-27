@@ -21,3 +21,7 @@ code {
 p {
   margin: 0;
 }
+
+.active {
+  color: #e84a5f;
+}

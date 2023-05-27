@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getContacts } from 'redux/selectors';
-import { addContact } from 'redux/operations';
+import { selectContacts } from 'redux/contacts/selectors';
+import { addContact } from 'redux/contacts/operations';
 
-import css from './Form.module.css';
+import css from './AddContactForm.module.css';
 
-export const Form = () => {
+export const AddContactForm = () => {
     const dispatch = useDispatch();
-    const contacts = useSelector(getContacts);
+    const contacts = useSelector(selectContacts);
 
     const checkingForMatches = (value) => {
         return (
@@ -24,7 +24,7 @@ export const Form = () => {
         return
         };
 
-        dispatch(addContact({name: name.value, phone: number.value}));
+        dispatch(addContact({name: name.value, number: number.value}));
 
         name.value = '';
         number.value = '';
