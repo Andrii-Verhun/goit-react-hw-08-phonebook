@@ -5,8 +5,6 @@ import { useAuth } from 'Hooks/useAuth';
 export const HomePage = () => {
     const { user: {name} } = useAuth();
 
-    console.log(name);
-
     return (
         <div className={css.homepage}>
             <h1 className={css.header}>Welcome to phonebook manager!</h1>
