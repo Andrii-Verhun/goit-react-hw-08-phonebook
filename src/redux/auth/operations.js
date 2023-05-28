@@ -8,7 +8,7 @@ const setAuthHeader = token => {
 };
 
 const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
+  axios.defaults.headers.common['Authorization'] = '';
 };
 
 export const register = createAsyncThunk(

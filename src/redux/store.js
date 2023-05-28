@@ -11,6 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { getPersistConfig } from 'redux-deep-persist';
 
 import { contactsReducer } from "./contacts/slice";
 import { filterReducer } from "./filter/slice";
@@ -22,11 +23,17 @@ const rootReducer = combineReducers({
   filter: filterReducer,
 });
 
-const persistConfig = {
+const persistConfig = getPersistConfig({
   key: 'root',
   storage,
-  blacklist: ['filter'],
-};
+  whitelist: [
+    'auth.user',
+    'auth.token',
+    'auth.isLoggedIn',
+    'auth.isRefreshing',
+    'contacts'],
+  rootReducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 

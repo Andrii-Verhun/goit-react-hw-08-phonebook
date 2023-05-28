@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { refreshUser } from 'redux/auth/operations';
 
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { RestrictedRoute } from './RestrictedRoute';
 import { PrivateRoute } from './PrivateRoute';
@@ -38,6 +38,7 @@ export const App = () => {
           path='contacts'
           element={<PrivateRoute redirectTo='/login' component={<Contacts />} />} />
       </Route>
+      <Route path='*' element={<Navigate to="/" replace />} />
     </Routes>
     );
 }
